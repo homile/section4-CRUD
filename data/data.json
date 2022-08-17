@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "제목입니다",
+      "content": "내용입니다.",
+      "user": "Cho Minwoo",
+      "createAt": "2022. 8. 17.",
+      "updateAt": null
+    },
+    {
+      "id": 2,
+      "title": "제목입니다2",
+      "content": "내용입니다2.",
+      "user": "Cho Minwoo",
+      "createAt": "2022. 8. 17.",
+      "updateAt": null
+    },
+    {
+      "id": 3,
+      "title": "제목입니다3",
+      "content": "내용입니다3.",
+      "user": "Cho Minwoo",
+      "createAt": "2022. 8. 17.",
+      "updateAt": null
+    },
+    {
+      "title": "제목을 입력해용",
+      "user": "후..힘들다",
+      "content": "이렇게 내용을 많이 써줘야하는데\n어떻게 쓰죠?\n몰라용",
+      "createAt": "2022. 8. 17.",
+      "updateAt": null,
+      "id": 6
+    }
+  ]
+}
