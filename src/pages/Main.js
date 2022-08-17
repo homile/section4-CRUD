@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ContentList from "../ui/ContentList";
 import { SearchInput } from "../ui/Input";
 
 const Main = () => {
+  const [searchData, setSearchData] = useState("");
+
   return (
     <MainContainer>
       <SearchInput>
         <div>
-          <input />
+          <input onChange={(e) => setSearchData(e.target.value)}/>
           <i className="fa-solid fa-magnifying-glass" />
         </div>
       </SearchInput>
-      <ContentList></ContentList>
+      <ContentList searchData={searchData}></ContentList>
     </MainContainer>
   );
 };

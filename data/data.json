@@ -31,6 +31,14 @@
       "createAt": "2022. 8. 17.",
       "updateAt": null,
       "id": 6
+    },
+    {
+      "title": "이건 아님",
+      "user": "조",
+      "content": "민우",
+      "createAt": "2022. 8. 17.",
+      "updateAt": null,
+      "id": 7
     }
   ]
 }

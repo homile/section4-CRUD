@@ -1,31 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import useFetch from "../util/useFetch";
 import { useNavigate } from "react-router-dom";
 
-const ContentList = () => {
+const ContentList = ({ searchData }) => {
   const [posts, error] = useFetch(`http://localhost:3001/posts`);
+  const [filteredData, setFilterdData] = useState([]);
   const navigate = useNavigate();
-  const onClickTitle = ((id) => {
-    navigate(`/view/${id}`)
-  })
+  const onClickTitle = (id) => {
+    navigate(`/view/${id}`);
+  };
+
+  useEffect(() => {
+    if (posts !== null && searchData !== "") {
+      setFilterdData(posts.filter((el) => el.title.includes(searchData)));
+    }
+  }, [searchData])
 
   return (
     <ContentListContainer>
-      {posts !== null &&
-        posts
-          .sort((a, b) => {
-            return b.id - a.id;
-          })
-          .map((el, idx) => {
-            return (
-              <TitleList key={idx} onClick={() => onClickTitle(el.id)}>
-                <div className="id">{el.id}</div>
-                <div className="title">{el.title}</div>
-                <div className="createat">{el.createAt}</div>
-              </TitleList>
-            );
-          })}
+      {posts !== null
+        ? searchData === ""
+          ? posts
+              .sort((a, b) => {
+                return b.id - a.id;
+              })
+              .map((el, idx) => {
+                return (
+                  <TitleList key={idx} onClick={() => onClickTitle(el.id)}>
+                    <div className="id">{el.id}</div>
+                    <div className="title">{el.title}</div>
+                    <div className="createat">{el.createAt}</div>
+                  </TitleList>
+                );
+              })
+          : filteredData
+              .sort((a, b) => {
+                return b.id - a.id;
+              })
+              .map((el, idx) => {
+                return (
+                  <TitleList key={idx} onClick={() => onClickTitle(el.id)}>
+                    <div className="id">{el.id}</div>
+                    <div className="title">{el.title}</div>
+                    <div className="createat">{el.createAt}</div>
+                  </TitleList>
+                );
+              })
+        : null}
     </ContentListContainer>
   );
 };
